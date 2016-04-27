@@ -11,8 +11,7 @@ class ApplicationController < Sinatra::Base
 
 
   get '/' do 
-    redirect "/login"
-    #welcome to fwitter!!! 
+    redirect "/login" 
   end
 
   helpers do

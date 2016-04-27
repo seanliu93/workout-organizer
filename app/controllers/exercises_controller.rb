@@ -55,8 +55,6 @@ class ExercisesController < ApplicationController
   patch "/exercises/:id" do
     if params[:name] == "" || params[:num_sets] == "" || params[:num_reps] == ""
       redirect "/exercises/#{params[:id]}/edit?error=Field(s) cannot be left blank"
-    elsif Exercise.find_by(name: params[:name]) != nil
-      redirect "/exercises/#{params[:id]}/edit?error=Exercise name already exists!"
     end
     @exercise = Exercise.find(params[:id])
     @exercise.name = params[:name]
