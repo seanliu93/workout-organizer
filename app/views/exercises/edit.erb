@@ -1,0 +1,15 @@
+<h1>Edit Exercise</h1>
+
+<form action="/exercises/<%= @exercise.id %>?workout_id=<%=@workout_id%>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+  <label>Exercise Name </label>
+  <input type="text" name="name" value="<%=@exercise.name%>"></br>
+
+  <label>Number of Sets </label>
+  <input type="number" name="num_sets" value="<%=@exercise.num_sets%>"></br>
+  <label>Number of Reps per Set </label>
+  <input type="number" name="num_reps" value="<%=@exercise.num_reps%>"></br>
+  </br>
+
+  <input type="submit" value="Edit Exercise">
+</form>

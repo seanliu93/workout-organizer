@@ -1,0 +1,18 @@
+<% if @workout %>
+<h1>Add New Exercises for <%= @workout.name %></h1>
+
+<form action="/workouts/<%= @workout.id %>?count=<%=@count%>" method="POST">
+  <% for i in 1..@count %>
+  <label>Exercise Name </label>
+  <input type="text" name="name_<%=i%>"></br>
+
+  <label>Number of Sets </label>
+  <input type="number" name="num_sets_<%=i%>"></br>
+  <label>Number of Reps per Set</label>
+  <input type="number" name="num_reps_<%=i%>"></br>
+  </br>
+  <% end %>
+
+  <input type="submit" value="Add Exercises">
+</form>
+<% end %>

@@ -1,0 +1,18 @@
+<h1>Hello, <%= @user.username %>!</h1>
+<h4>Current Workout Routine: </h4>
+<% @workouts.each do |workout| %>
+  <% if workout.active %>
+    <h5><%= workout.name %></h5>
+    <% workout.exercises.each do |exercise| %>
+      <p><%= exercise.name%></p>
+    <% end %>
+  <% end %>
+<% end %>
+<h4>Your Saved Workouts:</h4>
+<% @workouts.each do |workout| %>
+  <a href="/workouts/<%=workout.id%>"><%= workout.name %></a>
+  <br><br>
+<% end %>
+<form action="/workouts/new" method="GET">
+<input class="btn btn-primary" type="submit" value="Add Workout">
+</form>

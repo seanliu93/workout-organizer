@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Workout Organizer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  </head>
+  <body>
+      <nav>
+      <% if logged_in? %>
+        <a href="/logout"> Log Out </a>
+        <a href="/workouts">Home</a>
+        <p>Welcome, <%=current_user.username %></p>
+      <% end %>
+
+    </nav>
+
+    <%= yield %> 
+    <% if !@error_msg.nil? %>
+      <div class="alert alert-warning">
+        <p style="color:red"><%= @error_msg %></p>
+      </div>
+    <% end %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

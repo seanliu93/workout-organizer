@@ -1,0 +1,17 @@
+<h1>Add a New Workout</h1>
+
+<form action="/workouts" method="POST">
+  <label>Workout Name </label>
+  <input type="text" name="name"> </br>
+
+<h5>Add Existing Exercises</h5>
+   <%Exercise.all.each do |exercise|%>
+   <input type="checkbox" name="workout[exercise_ids][]" id="<%=exercise.id%>" value="<%=exercise.id%>"> <%= exercise.name %> </input>
+ <%end%>
+<h4>Add New Exercises</h4>
+ <label>How Many?</label>
+ <input type="text" name="exercise_count" id="exercise_count"><br>
+ <br>
+
+<input type="submit" value="Create">
+</form>

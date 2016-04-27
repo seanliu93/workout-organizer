@@ -1,0 +1,9 @@
+<h1><%= @workout.name %> <a href="/workouts/<%=@workout.id%>/edit">(edit)</a> <a href="/workouts/<%=@workout.id%>/delete">(delete)</a></h1>
+
+<h4>Exercises</h4>
+<% @workout.exercise_ids.each do |id| %>
+  <p><%= Exercise.find(id).name %></p>
+  <p>Sets: <%= Exercise.find(id).num_sets %></p>
+  <p>Reps per Set: <%= Exercise.find(id).num_reps %></p>
+  <br>
+<% end %>

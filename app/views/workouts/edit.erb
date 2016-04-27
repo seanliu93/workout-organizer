@@ -1,0 +1,31 @@
+<h1>Edit <%= @workout.name %></h1>
+
+<form action="/workouts/<%=@workout.id %>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+  <label> Workout Name </label>
+  <input type="text" name="name" value="<%=@workout.name %>"> </br>
+
+<% @workout.exercise_ids.each do |id| %>
+  <p><%= Exercise.find(id).name %>
+   <a href="/exercises/<%=id%>/edit?workout_id=<%=@workout.id%>">(edit)</a>
+   <a href="/exercises/<%=id%>/unlink?workout_id=<%=@workout.id%>">(remove from workout)</a>
+   <a href="/exercises/<%=id%>/delete?workout_id=<%=@workout.id%>">(delete)</a>
+  </p>
+  <p>Sets: <%= Exercise.find(id).num_sets %></p>
+  <p>Reps per Set: <%= Exercise.find(id).num_reps %></p>
+  <br>
+<% end %>
+
+<input type="checkbox" name="active" id="active" value=false>Current Workout</input>
+
+<h4>Add Existing Exercises</h4>
+   <%Exercise.not_linked_to(@workout.id).each do |exercise|%>
+     <input type="checkbox" name="workout[exercise_ids][]" id="<%=exercise.id%>" value="<%=exercise.id%>"> <%= exercise.name %> </input>
+   <%end%>
+<h4>Add New Exercises</h4>
+ <label>How Many?</label>
+ <input type="text" name="exercise_count" id="exercise_count"><br>
+ <br>
+
+  <input type="submit" value="Update">
+</form>
